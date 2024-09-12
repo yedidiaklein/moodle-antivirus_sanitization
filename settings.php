@@ -22,8 +22,10 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+defined('MOODLE_INTERNAL') || die();
+
 if ($ADMIN->fulltree) {
-    //clean path
+    // Clean path.
     $settings->add(
         new admin_setting_configtext(
             'antivirus_sanitization/cleanpath',
@@ -32,7 +34,7 @@ if ($ADMIN->fulltree) {
             '',
         )
     );
-    //dirty path
+    // Dirty path.
     $settings->add(
         new admin_setting_configtext(
             'antivirus_sanitization/dirtypath',
@@ -41,7 +43,7 @@ if ($ADMIN->fulltree) {
             '',
         )
     );
-    // timeout on wait for the scan to finish
+    // Timeout on wait for the scan to finish.
     $settings->add(
         new admin_setting_configtext(
             'antivirus_sanitization/timeout',
@@ -51,5 +53,4 @@ if ($ADMIN->fulltree) {
             PARAM_INT
         )
     );
-
 }

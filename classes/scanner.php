@@ -24,10 +24,16 @@
 
 namespace antivirus_sanitization;
 
+/**
+ * Antivirus scanner for the antivirus_sanitization plugin.
+ */
 class scanner extends \core\antivirus\scanner {
 
+    /**
+     * Checking if plugin is confgiured and if directories exists.
+     */
     public function is_configured() {
-        // Check if the clean and dirty directories exists
+        // Check if the clean and dirty directories exists.
         if (!is_dir($this->get_config('cleanpath'))) {
             debugging('Clean directory does not exist.');
             return false;
@@ -39,6 +45,13 @@ class scanner extends \core\antivirus\scanner {
         return true;
     }
 
+    /**
+     * Scanning a file using the sanitization scanner tool.
+     *
+     * @param string $file The full path to the file to scan.
+     * @param string $filename The real name of the file to scan.
+     * @throws \core\antivirus\scanner_exception If a virus is found.
+     */
     public function scan_file($file, $filename) {
         if (!is_readable($file)) {
             // This should not happen.
@@ -50,7 +63,7 @@ class scanner extends \core\antivirus\scanner {
         // In this case the tool returns:
         // - 0 if no virus is found
         // - 1 if a virus was found
-        // - [int] on error
+        // - [int] on error.
         $return = $this->scan_file_using_sanitization_scanner_tool($file, $filename);
 
         if ($return == 0) {
@@ -73,16 +86,23 @@ class scanner extends \core\antivirus\scanner {
         }
     }
 
+    /**
+     * Scanning a file using the sanitization scanner tool.
+     *
+     * @param string $file The full path to the file to scan.
+     * @param string $filename The real name of the file to scan.
+     * @return int The result of the scan.
+     */
     public function scan_file_using_sanitization_scanner_tool($file, $filename): int {
         // Scanning routine using antivirus own tool goes here..
         // You should choose a return value appropriate for your tool.
         // These must match the expected values in the scan_file() function.
         // In this example the following are returned:
         // - 0: No virus found
-        // - 1: Virus found
+        // - 1: Virus found.
         global $CFG;
-        file_put_contents($CFG->dataroot . '/sanitization.log', "Scanning file $file\n", FILE_APPEND);
-        file_put_contents($CFG->dataroot . '/sanitization.log', "copying to dirty dir $file\n", FILE_APPEND);
+        debugging("Scanning file $file");
+        debugging("copying to dirty dir $file");
         copy($file, $this->get_config('dirtypath') . '/' . $filename);
         // Waiting for the file to appear in the clean directory.
         $timeout = $this->get_config('timeout');
@@ -91,7 +111,7 @@ class scanner extends \core\antivirus\scanner {
             $now = time();
             if ($now - $start > $timeout) {
                 // File didn't appear in clean directory after timeout.
-                file_put_contents($CFG->dataroot . '/sanitization.log', "Virus found in file $file !!, time is $now started at $start \n", FILE_APPEND);
+                debugging("Virus found in file $file !!, time is $now started at $start");
                 return 1;
             }
             sleep(1);

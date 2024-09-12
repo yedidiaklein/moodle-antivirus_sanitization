@@ -22,9 +22,9 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname']= 'אנטיוירוס הלבנה';
-$string['configcleanpath'] = 'הגדירו נתיב מלא לתיקיית נקיון'; 
-$string['cleanpath'] = 'נתיב לתיקיית נקיון'; 
+$string['pluginname'] = 'אנטיוירוס הלבנה';
+$string['configcleanpath'] = 'הגדירו נתיב מלא לתיקיית נקיון';
+$string['cleanpath'] = 'נתיב לתיקיית נקיון';
 $string['configdirtypath'] = 'הגדירו נתיב מלא לתיקיית מלוכלכת';
 $string['dirtypath'] = 'נתיב לתיקיית מלוכלכת';
 $string['timeout'] = 'זמן המתנה';

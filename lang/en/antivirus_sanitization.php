@@ -22,7 +22,7 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-$string['pluginname']= 'Sanitization antivirus';
+$string['pluginname'] = 'Sanitization antivirus';
 $string['configcleanpath'] = 'Path to clean directory';
 $string['cleanpath'] = 'Define full path to clean directory';
 $string['configdirtypath'] = 'Path to dirty directory';

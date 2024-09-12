@@ -8,7 +8,7 @@ It is not the sanitization system - just the connection from Moodle to it.
 ## Installation
 
 1. Download the latest version of the Sanitization Plugin from the Moodle plugins directory.
-2. Extract the plugin files to the `/var/www/html/moodle41/lib/antivirus/sanitization/` directory.
+2. Extract the plugin files to the `lib/antivirus/sanitization/` directory.
 3. Log in to your Moodle site as an administrator.
 4. Navigate to **Site administration** > **Plugins** > **Antivirus plugins**.
 5. Enable the Sanitization Plugin by clicking on the toggle switch.

@@ -29,5 +29,5 @@ The Sanitization Plugin provides several configuration options to customize its 
 
 ## Troubleshooting
 
-If you encounter any issues or have questions regarding the Sanitization Plugin, please refer to the Me yedidia at openapp.co.il
+If you encounter any issues or have questions regarding the Sanitization Plugin, please open issues at : https://github.com/yedidiaklein/moodle-antivirus_sanitization/issues
 

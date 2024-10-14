@@ -119,6 +119,8 @@ class scanner extends \core\antivirus\scanner {
         // Make sure that file arrived to clean directory.
         if (file_exists($this->get_config('cleanpath') . '/' . $filename)) {
             file_put_contents($CFG->dataroot . '/sanitization.log', "Virus not found in file $filename\n", FILE_APPEND);
+            // Copy clean file to original location.
+            copy($this->get_config('cleanpath') . '/' . $filename, $file);
             // Delete the file from clean directory.
             unlink($this->get_config('cleanpath') . '/' . $filename);
             return 0;
